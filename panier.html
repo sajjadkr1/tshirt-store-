@@ -7,10 +7,16 @@
     <!-- Adapte la page aux différentes tailles d'écran -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Titre de la page -->
-    <title>T-shirt Store</title>
+    <!-- Description de la page pour le référencement SEO -->
+    <meta
+        name="description"
+        content="Consultez et gérez votre panier sur T-shirt Store."
+    >
 
-    <!-- Fichier CSS -->
+    <!-- Titre de la page -->
+    <title>Panier | T-shirt Store</title>
+
+    <!-- Fichier CSS principal -->
     <link rel="stylesheet" href="style.css">
 
     <!-- Font Awesome pour utiliser les icônes -->
@@ -32,35 +38,37 @@
         <h1>T-shirt Store</h1>
 
         <!-- Navigation principale -->
-        <nav>
+        <nav aria-label="Navigation principale">
 
             <!-- Accueil -->
             <a href="index.html" aria-label="Accueil">
-                <i class="fa-solid fa-house"></i>
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
             </a>
 
             <!-- Produits -->
-            <a href="produits.html" aria-label="Produits">
-                <i class="fa-solid fa-shirt"></i>
+            <a href="index.html#products" aria-label="Produits">
+                <i class="fa-solid fa-shirt" aria-hidden="true"></i>
             </a>
 
             <!-- Panier : ouvre le panier sans changer de page -->
             <button
                 type="button"
-                id="cart-button"
-                aria-label="Panier"
+    id="cart-button"
+    aria-label="Ouvrir le panier"
+    aria-controls="cart-panel"
+    aria-expanded="false"
             >
-                <i class="fa-solid fa-cart-shopping"></i>
+                <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
             </button>
 
             <!-- Contact -->
-            <a href="contact.html" aria-label="Contact">
-                <i class="fa-solid fa-envelope"></i>
+            <a href="index.html#contact" aria-label="Contact">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
             </a>
 
             <!-- Connexion -->
             <a href="login.html" aria-label="Connexion">
-                <i class="fa-solid fa-user"></i>
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
             </a>
 
         </nav>
@@ -72,7 +80,11 @@
          PANIER
     ========================== -->
 
-    <div id="cart-panel">
+    <aside
+        id="cart-panel"
+        role="dialog"
+        aria-labelledby="cart-title"
+    >
 
         <!-- Fermer le panier -->
         <button
@@ -80,111 +92,160 @@
             id="close-cart"
             aria-label="Fermer le panier"
         >
-            <i class="fa-solid fa-xmark"></i>
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
 
         <!-- Titre du panier -->
-        <h2>
-            <i class="fa-solid fa-cart-shopping"></i>
+        <h2 id="cart-title">
+            <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
             Mon panier
         </h2>
 
-        <!-- Produits du panier -->
+        <!-- Produits ajoutés au panier -->
         <div id="cart"></div>
 
-    </div>
+    </aside>
 
 
     <!-- =========================
          CONTENU PRINCIPAL
     ========================== -->
 
-    <!-- Message de bienvenue -->
-    <p>Bienvenue dans notre boutique de T-shirts</p>
-
     <main>
 
-        <!-- Section des produits -->
-        <section>
+        <!-- Message de bienvenue -->
+        <section aria-labelledby="welcome-title">
 
-            <h2>Nos produits</h2>
+            <h2 id="welcome-title">Bienvenue</h2>
 
+            <p>
+                Bienvenue dans notre boutique de T-shirts.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             SECTION DES PRODUITS
+        ========================== -->
+
+        <section
+            id="products"
+            aria-labelledby="products-title"
+        >
+
+            <!-- Titre de la section -->
+            <h2 id="products-title">
+                Nos produits
+            </h2>
+
+
+            <!-- Contient toutes les cartes produits -->
             <div class="products">
 
-                <!-- Produit 1 -->
-                <div class="pro1">
 
+                <!-- =========================
+                     PRODUIT 1
+                ========================== -->
+
+                <article class="pro1">
+
+                    <!-- Nom du produit -->
                     <h3>T-shirt noir</h3>
 
+                    <!-- Image du produit -->
                     <img
-                        src="/img/noir.png"
+                        src="img/noir.png"
                         alt="T-shirt noir"
                     >
 
-                    <p>15€</p>
+                    <!-- Prix -->
+                    <p>15 €</p>
 
-                    <button>
+                    <!-- Ajouter le produit au panier -->
+                    <button type="button">
                         Ajouter au panier
                     </button>
 
-                </div>
+                </article>
 
 
-                <!-- Produit 2 -->
-                <div class="pro1">
+                <!-- =========================
+                     PRODUIT 2
+                ========================== -->
 
+                <article class="pro1">
+
+                    <!-- Nom du produit -->
                     <h3>T-shirt rouge</h3>
 
+                    <!-- Image du produit -->
                     <img
-                        src="/img/rouge.png"
+                        src="img/rouge.png"
                         alt="T-shirt rouge"
                     >
 
-                    <p>20€</p>
+                    <!-- Prix -->
+                    <p>20 €</p>
 
-                    <button>
+                    <!-- Ajouter le produit au panier -->
+                    <button type="button">
                         Ajouter au panier
                     </button>
 
-                </div>
+                </article>
 
 
-                <!-- Produit 3 -->
-                <div class="pro1">
+                <!-- =========================
+                     PRODUIT 3
+                ========================== -->
 
+                <article class="pro1">
+
+                    <!-- Nom du produit -->
                     <h3>T-shirt blanc</h3>
 
+                    <!-- Image du produit -->
                     <img
-                        src="/img/blanc.png"
+                        src="img/blanc.png"
                         alt="T-shirt blanc"
                     >
 
-                    <p>25€</p>
+                    <!-- Prix -->
+                    <p>25 €</p>
 
-                    <button>
+                    <!-- Ajouter le produit au panier -->
+                    <button type="button">
                         Ajouter au panier
                     </button>
 
-                </div>
+                </article>
 
 
-                <!-- Produit 4 -->
-                <div class="pro1">
+                <!-- =========================
+                     PRODUIT 4
+                ========================== -->
 
+                <article class="pro1">
+
+                    <!-- Nom du produit -->
                     <h3>T-shirt vert</h3>
 
+                    <!-- Image du produit -->
                     <img
-                        src="/img/ver.png"
+                        src="img/ver.png"
                         alt="T-shirt vert"
                     >
 
-                    <p>25€</p>
+                    <!-- Prix -->
+                    <p>25 €</p>
 
-                    <button>
+                    <!-- Ajouter le produit au panier -->
+                    <button type="button">
                         Ajouter au panier
                     </button>
 
-                </div>
+                </article>
 
             </div>
 
@@ -197,19 +258,37 @@
          FOOTER
     ========================== -->
 
-    <footer>
+    <footer id="contact">
 
+        <!-- Copyright -->
         <div>
             <p>© 2026 T-shirt Store</p>
         </div>
 
+
+        <!-- Informations de contact -->
         <div>
-            <p>t-shirt@mile.com</p>
-            <p>06 54 73 21 13</p>
+
+            <!-- Adresse e-mail -->
+            <p>
+                <a href="mailto:t-shirt@mile.com">
+                    t-shirt@mile.com
+                </a>
+            </p>
+
+            <!-- Numéro de téléphone -->
+            <p>
+                <a href="tel:+33654732113">
+                    06 54 73 21 13
+                </a>
+            </p>
+
         </div>
 
+
+        <!-- Retour à la section contact -->
         <div>
-            <a href="contact.html">
+            <a href="#contact">
                 Contact
             </a>
         </div>
@@ -217,7 +296,11 @@
     </footer>
 
 
-    <!-- JavaScript -->
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <!-- Fichier JavaScript principal -->
     <script src="script.js"></script>
 
 </body>

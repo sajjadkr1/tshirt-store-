@@ -7,12 +7,19 @@
     <!-- Adapte la page aux différentes tailles d'écran -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Connexion - T-shirt Store</title>
+    <!-- Description de la page pour le référencement SEO -->
+    <meta
+        name="description"
+        content="Connectez-vous ou créez un compte sur T-shirt Store."
+    >
+
+    <!-- Titre affiché dans l'onglet du navigateur -->
+    <title>Connexion | T-shirt Store</title>
 
     <!-- Fichier CSS principal -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Font Awesome pour les icônes -->
+    <!-- Font Awesome pour utiliser les icônes -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -22,33 +29,35 @@
 <body>
 
     <!-- =========================
-         NAVIGATION
+         EN-TÊTE / NAVIGATION
     ========================== -->
 
     <header>
 
+        <!-- Nom du magasin -->
         <h1>T-shirt Store</h1>
 
-        <nav>
+        <!-- Navigation principale -->
+        <nav aria-label="Navigation principale">
 
             <!-- Retour à l'accueil -->
             <a href="index.html" aria-label="Accueil">
-                <i class="fa-solid fa-house"></i>
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
             </a>
 
-            <!-- Produits -->
-            <a href="produits.html" aria-label="Produits">
-                <i class="fa-solid fa-shirt"></i>
+            <!-- Aller à la section des produits -->
+            <a href="index.html#products" aria-label="Produits">
+                <i class="fa-solid fa-shirt" aria-hidden="true"></i>
             </a>
 
-            <!-- Contact -->
-            <a href="contact.html" aria-label="Contact">
-                <i class="fa-solid fa-envelope"></i>
+            <!-- Aller à la section contact -->
+            <a href="index.html#contact" aria-label="Contact">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
             </a>
 
             <!-- Page de connexion -->
             <a href="login.html" aria-label="Connexion">
-                <i class="fa-solid fa-user"></i>
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
             </a>
 
         </nav>
@@ -62,23 +71,35 @@
 
     <main class="auth-container">
 
-        <!-- Carte qui contient les formulaires -->
-        <div class="auth-card">
+        <!-- Carte principale contenant les formulaires -->
+        <section class="auth-card" aria-labelledby="auth-title">
 
-            <!-- Boutons pour changer de formulaire -->
+            <!-- Titre principal de la zone utilisateur -->
+            <h2 id="auth-title">Espace utilisateur</h2>
+
+
+            <!-- =========================
+                 BOUTONS DE NAVIGATION
+                 ENTRE LES FORMULAIRES
+            ========================== -->
+
             <div class="auth-tabs">
 
+                <!-- Affiche le formulaire de connexion -->
                 <button
                     type="button"
                     id="login-tab"
                     class="active"
+                    aria-controls="login-form"
                 >
                     Connexion
                 </button>
 
+                <!-- Affiche le formulaire d'inscription -->
                 <button
                     type="button"
                     id="signup-tab"
+                    aria-controls="register-form"
                 >
                     S'inscrire
                 </button>
@@ -87,30 +108,54 @@
 
 
             <!-- =========================
-                 FORMULAIRE CONNEXION
+                 FORMULAIRE DE CONNEXION
             ========================== -->
 
             <form id="login-form">
 
-                <h2>Connexion</h2>
+                <!-- Titre du formulaire -->
+                <h3>Connexion</h3>
+
 
                 <!-- Adresse e-mail -->
                 <div class="field">
+
+                    <!-- Label associé au champ e-mail -->
+                    <label for="login-email">
+                        Adresse e-mail
+                    </label>
+
+                    <!-- Champ pour saisir l'adresse e-mail -->
                     <input
+                        id="login-email"
+                        name="email"
                         type="email"
-                        placeholder="Adresse e-mail"
+                        autocomplete="email"
                         required
                     >
+
                 </div>
+
 
                 <!-- Mot de passe -->
                 <div class="field">
+
+                    <!-- Label associé au mot de passe -->
+                    <label for="login-password">
+                        Mot de passe
+                    </label>
+
+                    <!-- Champ pour saisir le mot de passe -->
                     <input
+                        id="login-password"
+                        name="password"
                         type="password"
-                        placeholder="Mot de passe"
+                        autocomplete="current-password"
                         required
                     >
+
                 </div>
+
 
                 <!-- Bouton de connexion -->
                 <button type="submit" class="btn">
@@ -121,48 +166,94 @@
 
 
             <!-- =========================
-                 FORMULAIRE INSCRIPTION
+                 FORMULAIRE D'INSCRIPTION
             ========================== -->
 
             <form id="register-form">
 
-                <h2>Créer un compte</h2>
+                <!-- Titre du formulaire -->
+                <h3>Créer un compte</h3>
+
 
                 <!-- Nom -->
                 <div class="field">
+
+                    <!-- Label associé au champ nom -->
+                    <label for="register-name">
+                        Nom
+                    </label>
+
+                    <!-- Champ pour saisir le nom -->
                     <input
+                        id="register-name"
+                        name="name"
                         type="text"
-                        placeholder="Nom"
+                        autocomplete="name"
                         required
                     >
+
                 </div>
+
 
                 <!-- Adresse e-mail -->
                 <div class="field">
+
+                    <!-- Label associé au champ e-mail -->
+                    <label for="register-email">
+                        Adresse e-mail
+                    </label>
+
+                    <!-- Champ pour saisir l'adresse e-mail -->
                     <input
+                        id="register-email"
+                        name="email"
                         type="email"
-                        placeholder="Adresse e-mail"
+                        autocomplete="email"
                         required
                     >
+
                 </div>
+
 
                 <!-- Mot de passe -->
                 <div class="field">
+
+                    <!-- Label associé au mot de passe -->
+                    <label for="register-password">
+                        Mot de passe
+                    </label>
+
+                    <!-- Champ pour créer un mot de passe -->
                     <input
+                        id="register-password"
+                        name="password"
                         type="password"
-                        placeholder="Mot de passe"
+                        autocomplete="new-password"
                         required
                     >
+
                 </div>
+
 
                 <!-- Confirmation du mot de passe -->
                 <div class="field">
+
+                    <!-- Label associé à la confirmation -->
+                    <label for="register-confirm-password">
+                        Confirmer le mot de passe
+                    </label>
+
+                    <!-- Champ pour confirmer le mot de passe -->
                     <input
+                        id="register-confirm-password"
+                        name="confirmPassword"
                         type="password"
-                        placeholder="Confirmer le mot de passe"
+                        autocomplete="new-password"
                         required
                     >
+
                 </div>
+
 
                 <!-- Bouton d'inscription -->
                 <button type="submit" class="btn">
@@ -171,12 +262,16 @@
 
             </form>
 
-        </div>
+        </section>
 
     </main>
 
 
-    <!-- JavaScript -->
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <!-- Fichier JavaScript principal -->
     <script src="script.js"></script>
 
 </body>

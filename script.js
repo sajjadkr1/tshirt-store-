@@ -1,51 +1,191 @@
-import { json } from "body-parser";
+// ==========================
+// PANIER - FONCTIONS
+// ==========================
+
+// Récupère les produits enregistrés dans le localStorage
+function getCart() {
+  const savedCart = localStorage.getItem("cart");
+
+  // Si un panier existe, on le transforme en tableau JavaScript
+  if (savedCart) {
+    return JSON.parse(savedCart);
+  }
+
+  // Sinon, retourne un tableau vide
+  return [];
+}
+
+
+// Enregistre le panier dans le localStorage
+function saveCart(cart) {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+
+// Ajoute un produit dans le panier
+function addToCart(product) {
+
+  // Récupère le panier actuel
+  const cart = getCart();
+
+  // Ajoute le nouveau produit
+  cart.push(product);
+
+  // Enregistre le nouveau panier
+  saveCart(cart);
+
+  // Met à jour l'affichage du panier
+  displayCart();
+
+  // Affiche le produit ajouté dans la console
+  console.log("Produit ajouté au panier :", product);
+}
+
+
+// Supprime un produit du panier
+function removeFromCart(index) {
+
+  // Récupère le panier actuel
+  const cart = getCart();
+
+  // Supprime le produit selon sa position dans le tableau
+  cart.splice(index, 1);
+
+  // Enregistre le panier après suppression
+  saveCart(cart);
+
+  // Met à jour l'affichage du panier
+  displayCart();
+}
+
+
+// Affiche les produits du panier
+function displayCart() {
+
+  // Sélectionne la zone du panier
+  const cartContainer = document.getElementById("cart");
+
+  // Vérifie que la zone du panier existe
+  if (!cartContainer) {
+    return;
+  }
+
+  // Vide le contenu actuel
+  cartContainer.innerHTML = "";
+
+  // Récupère les produits du panier
+  const cart = getCart();
+
+  // Message si le panier est vide
+  if (cart.length === 0) {
+    cartContainer.textContent = "Votre panier est vide.";
+    return;
+  }
+
+  // Affiche chaque produit du panier
+  cart.forEach(function (product, index) {
+
+    // Crée la carte du produit
+    const cartProduct = document.createElement("div");
+
+    // Ajoute une classe CSS
+    cartProduct.classList.add("cart-product");
+
+
+    // Crée le nom du produit
+    const productName = document.createElement("p");
+
+    productName.textContent = product.name;
+
+    cartProduct.appendChild(productName);
+
+
+    // Crée le prix du produit
+    const productPrice = document.createElement("p");
+
+    productPrice.textContent = product.price;
+
+    cartProduct.appendChild(productPrice);
+
+
+    // Crée le bouton Supprimer
+    const removeButton = document.createElement("button");
+
+    removeButton.type = "button";
+    removeButton.textContent = "Supprimer";
+
+    removeButton.classList.add("remove-button");
+
+
+    // Supprime le produit quand on clique sur le bouton
+    removeButton.addEventListener("click", function () {
+      removeFromCart(index);
+    });
+
+
+    // Ajoute le bouton dans la carte
+    cartProduct.appendChild(removeButton);
+
+
+    // Ajoute le produit dans le panier
+    cartContainer.appendChild(cartProduct);
+  });
+}
+
+
+// Affiche le panier au chargement de la page
+displayCart();
+
+
+
+// ==========================
+// PRODUITS HTML
+// ==========================
 
 // Sélectionne tous les boutons "Ajouter au panier"
-document.querySelectorAll('.pro1 button').forEach(function (button) {
+// des produits déjà présents dans le HTML
+document.querySelectorAll(".pro1 button").forEach(function (button) {
 
   // Quand on clique sur un bouton
-  button.addEventListener('click', function () {
+  button.addEventListener("click", function () {
 
     // Récupère la carte du produit sélectionné
-    const parentElement = button.closest('.pro1') || button.parentElement;
+    const parentElement = button.closest(".pro1");
+
+    // Vérifie que la carte du produit existe
+    if (!parentElement) {
+      return;
+    }
+
 
     // Récupère le nom du produit
-    const productName = parentElement.querySelector('h3').textContent.trim();
+    const nameElement = parentElement.querySelector("h3");
 
     // Récupère le prix du produit
-    const price = parentElement.querySelector('p').textContent.trim();
+    const priceElement = parentElement.querySelector("p");
 
     // Récupère l'image du produit
-    const img = parentElement.querySelector('img').src;
+    const imageElement = parentElement.querySelector("img");
+
+
+    // Vérifie que les informations existent
+    if (!nameElement || !priceElement || !imageElement) {
+      return;
+    }
+
 
     // Regroupe les informations du produit dans un objet
     const product = {
-      name: productName,
-      price: price,
-      img: img,
+      name: nameElement.textContent.trim(),
+      price: priceElement.textContent.trim(),
+      img: imageElement.src
     };
 
-    // Enregistre le nom du produit dans le localStorage
-    localStorage.setItem('productName', productName);
 
-    // Affiche les informations dans la console
-    console.log(productName);
-    console.log(product);
+    // Ajoute le produit au panier
+    addToCart(product);
   });
-
 });
-
-
-// Récupère le produit enregistré dans le localStorage
-const savedProduct = localStorage.getItem('productName');
-
-// Sélectionne la zone du panier
-const cart = document.querySelector('#cart');
-
-// Vérifie que la zone du panier existe avant de l'utiliser
-if (cart) {
-  cart.textContent = savedProduct || '';
-}
 
 
 
@@ -53,19 +193,25 @@ if (cart) {
 // CONNEXION / INSCRIPTION
 // ==========================
 
-// Récupère les boutons Login et Sign Up
+// Récupère les boutons Connexion et Inscription
 const signupTab = document.getElementById("signup-tab");
 const loginTab = document.getElementById("login-tab");
+
 
 // Récupère les deux formulaires
 const registerForm = document.getElementById("register-form");
 const loginForm = document.getElementById("login-form");
 
+
 // Vérifie que les éléments existent dans la page
 if (signupTab && loginTab && registerForm && loginForm) {
 
-  // Quand on clique sur Sign Up
-  signupTab.addEventListener('click', function () {
+  // Cache le formulaire d'inscription au chargement
+  registerForm.style.display = "none";
+
+
+  // Quand on clique sur S'inscrire
+  signupTab.addEventListener("click", function () {
 
     // Affiche le formulaire d'inscription
     registerForm.style.display = "block";
@@ -73,16 +219,16 @@ if (signupTab && loginTab && registerForm && loginForm) {
     // Cache le formulaire de connexion
     loginForm.style.display = "none";
 
-    // Active le bouton Sign Up
+    // Active le bouton Inscription
     signupTab.classList.add("active");
 
-    // Désactive le bouton Login
+    // Désactive le bouton Connexion
     loginTab.classList.remove("active");
   });
 
 
-  // Quand on clique sur Login
-  loginTab.addEventListener('click', function () {
+  // Quand on clique sur Connexion
+  loginTab.addEventListener("click", function () {
 
     // Affiche le formulaire de connexion
     loginForm.style.display = "block";
@@ -90,19 +236,18 @@ if (signupTab && loginTab && registerForm && loginForm) {
     // Cache le formulaire d'inscription
     registerForm.style.display = "none";
 
-    // Active le bouton Login
+    // Active le bouton Connexion
     loginTab.classList.add("active");
 
-    // Désactive le bouton Sign Up
+    // Désactive le bouton Inscription
     signupTab.classList.remove("active");
   });
-
 }
 
 
 
 // ==========================
-// PANIER
+// PANNEAU DU PANIER
 // ==========================
 
 // Récupère le bouton qui ouvre le panier
@@ -111,74 +256,172 @@ const cartButton = document.getElementById("cart-button");
 // Récupère le panneau du panier
 const cartPanel = document.getElementById("cart-panel");
 
-// Récupère le bouton de fermeture
+// Récupère le bouton qui ferme le panier
 const closeCart = document.getElementById("close-cart");
 
-// Vérifie que tous les éléments du panier existent
+
+// Vérifie que tous les éléments existent
 if (cartButton && cartPanel && closeCart) {
 
-  // Ouvre le panier quand on clique sur l'icône
-  cartButton.addEventListener('click', function () {
+  // Ouvre le panier
+  cartButton.addEventListener("click", function () {
 
-    // Ajoute la classe "open" pour afficher le panier
-    cartPanel.classList.add('open');
+    // Ajoute la classe "open"
+    cartPanel.classList.add("open");
+
+    // Informe les technologies d'assistance
+    cartButton.setAttribute("aria-expanded", "true");
   });
 
 
-  // Ferme le panier quand on clique sur la croix
-  closeCart.addEventListener('click', function () {
+  // Ferme le panier
+  closeCart.addEventListener("click", function () {
 
-    // Retire la classe "open" pour cacher le panier
-    cartPanel.classList.remove('open');
+    // Retire la classe "open"
+    cartPanel.classList.remove("open");
+
+    // Informe les technologies d'assistance
+    cartButton.setAttribute("aria-expanded", "false");
   });
-
 }
 
-fetch("http://localhost:3000/api/products")
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (products) {
 
-    console.log(products);
 
-    const productsList = document.getElementById("products-list");
+// ==========================
+// PRODUITS DE L'API
+// ==========================
 
-    products.forEach(function (product) {
+// Sélectionne la zone qui recevra les produits MongoDB
+const productsList = document.getElementById("products-list");
 
-      const productCard = document.createElement("div");
 
-      productCard.classList.add("pro1");
+// Vérifie que la zone existe avant d'appeler l'API
+if (productsList) {
 
-      const productName = document.createElement("h3");
+  // Récupère les produits depuis le backend
+  fetch("http://localhost:3000/api/products")
 
-      productName.textContent = product.name;
+    // Vérifie la réponse du serveur
+    .then(function (response) {
 
-      productCard.appendChild(productName);
+      if (!response.ok) {
+        throw new Error("Erreur lors de la récupération des produits");
+      }
 
-      productsList.appendChild(productCard);
+      return response.json();
+    })
 
-      const productPrice = document.createElement("p");
 
-      productPrice.textContent = `${product.price}€`;
+    // Récupère les produits
+    .then(function (products) {
 
-      productCard.appendChild(productPrice);
+      // Affiche les produits dans la console
+      console.log(products);
 
-      productsList.appendChild(productCard);
 
-      const productImage = document.createElement("img");
-      
-      productImage.src = product.imgUrl
-      
-      productCard.appendChild(productImage);
+      // Parcourt tous les produits reçus
+      products.forEach(function (product) {
 
-      // const addButton = document.createElement("button");
-     // addButton.textContent = "Ajouter au panier";
-     // productCard.appendChild(addButton);
-     // addButton.addEventListener("click", function(){
-       // console.log(product);
-       // localStorage.setItem("cart", JSON.stringify(product));
-      })
+        // ==========================
+        // CARTE DU PRODUIT
+        // ==========================
+
+        // Crée la carte du produit
+        const productCard = document.createElement("article");
+
+        // Ajoute la classe CSS
+        productCard.classList.add("pro1");
+
+
+        // ==========================
+        // NOM DU PRODUIT
+        // ==========================
+
+        // Crée le titre
+        const productName = document.createElement("h3");
+
+        // Ajoute le nom
+        productName.textContent = product.name;
+
+        // Ajoute le titre dans la carte
+        productCard.appendChild(productName);
+
+
+        // ==========================
+        // IMAGE DU PRODUIT
+        // ==========================
+
+        // Crée l'image
+        const productImage = document.createElement("img");
+
+        // Ajoute l'adresse de l'image
+        productImage.src = product.imgUrl;
+
+        // Ajoute un texte alternatif pour l'accessibilité
+        productImage.alt = product.name;
+
+        // Ajoute l'image dans la carte
+        productCard.appendChild(productImage);
+
+
+        // ==========================
+        // PRIX DU PRODUIT
+        // ==========================
+
+        // Crée le prix
+        const productPrice = document.createElement("p");
+
+        // Ajoute le prix
+        productPrice.textContent = `${product.price} €`;
+
+        // Ajoute le prix dans la carte
+        productCard.appendChild(productPrice);
+
+
+        // ==========================
+        // BOUTON AJOUTER AU PANIER
+        // ==========================
+
+        // Crée le bouton
+        const addButton = document.createElement("button");
+
+        // Définit le type du bouton
+        addButton.type = "button";
+
+        // Ajoute le texte du bouton
+        addButton.textContent = "Ajouter au panier";
+
+        // Ajoute le bouton dans la carte
+        productCard.appendChild(addButton);
+
+
+        // Quand on clique sur le bouton
+        addButton.addEventListener("click", function () {
+
+          // Prépare les informations du produit
+          const cartProduct = {
+            name: product.name,
+            price: `${product.price} €`,
+            img: product.imgUrl
+          };
+
+          // Ajoute le produit au panier
+          addToCart(cartProduct);
+        });
+
+
+        // ==========================
+        // AFFICHAGE DE LA CARTE
+        // ==========================
+
+        // Ajoute la carte complète dans la page
+        productsList.appendChild(productCard);
+      });
+    })
+
+
+    // Affiche une erreur si le serveur ne répond pas
+    .catch(function (error) {
+      console.error("Erreur API :", error);
     });
-
-  //});
+}

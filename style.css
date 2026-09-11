@@ -367,3 +367,21 @@ footer a {
 #close-cart:hover {
     transform: scale(1.2);
 }
+
+/* Bouton pour supprimer un produit du panier */
+.remove-button {
+    margin-top: 8px;
+    padding: 6px 10px;
+
+    border: none;
+    border-radius: 6px;
+
+    background-color: brown;
+    color: white;
+
+    cursor: pointer;
+}
+
+.remove-button:hover {
+    transform: scale(1.05);
+}
