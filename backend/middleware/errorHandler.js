@@ -1,10 +1,10 @@
 export const errorHandler = (err, req, res, next) => {
     console.error(err);
+
     const statusCode = err.statusCode || 500;
 
     res.status(statusCode).json({
-        success : false,
-        messge : err.message || "Erreur serveur"
+        success: false,
+        message: err.message || "Erreur serveur"
     });
-
 };

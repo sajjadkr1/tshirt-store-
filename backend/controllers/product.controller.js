@@ -7,14 +7,14 @@ export const addProduct = async (req, res) => {
 
         await product.save();
 
-        res.status(201).json({
+        return res.status(201).json({
             message: "Produit ajouté",
             product
         });
 
     } catch (error) {
-        res.status(500).json({
-            message: "Erreur lors de l'ajout",
+        return res.status(500).json({
+            message: "Erreur lors de l'ajout du produit",
             error
         });
     }
@@ -26,10 +26,10 @@ export const getAllProducts = async (_req, res) => {
     try {
         const products = await Product.find();
 
-        res.status(200).json(products);
+        return res.status(200).json(products);
 
     } catch (error) {
-        res.status(500).json({
+        return res.status(500).json({
             message: "Erreur lors de la récupération des produits",
             error
         });
@@ -43,19 +43,15 @@ export const getProductById = async (req, res) => {
         const product = await Product.findById(req.params.id);
 
         if (!product) {
-           // return res.status(404).json({
-               // message: "Produit non trouvé"
-               const error = new error("product non trové");
-               error.statusCode = 404;
-              throw error;
-               
-            };
+            return res.status(404).json({
+                message: "Produit non trouvé"
+            });
         }
 
-        res.status(200).json(product);
+        return res.status(200).json(product);
 
     } catch (error) {
-        res.status(500).json({
+        return res.status(500).json({
             message: "Erreur lors de la récupération du produit",
             error
         });
@@ -74,12 +70,12 @@ export const deleteProduct = async (req, res) => {
             });
         }
 
-        res.status(200).json({
+        return res.status(200).json({
             message: "Produit supprimé"
         });
 
     } catch (error) {
-        res.status(500).json({
+        return res.status(500).json({
             message: "Erreur lors de la suppression du produit",
             error
         });
@@ -102,13 +98,13 @@ export const updateProduct = async (req, res) => {
             });
         }
 
-        res.status(200).json({
+        return res.status(200).json({
             message: "Produit modifié",
             product
         });
 
     } catch (error) {
-        res.status(500).json({
+        return res.status(500).json({
             message: "Erreur lors de la modification du produit",
             error
         });
