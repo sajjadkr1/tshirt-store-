@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Adapte la page aux différentes tailles d'écran -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Titre de la page -->
+    <title>T-shirt Store</title>
+
+    <!-- Fichier CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome pour utiliser les icônes -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- En-tête du site -->
+    <header>
+
+        <!-- Nom du magasin -->
+        <h1>T-shirt Store</h1>
+
+        <!-- Navigation principale -->
+        <nav>
+
+            <!-- Accueil -->
+            <a href="accueil.html" aria-label="Accueil">
+                <i class="fa-solid fa-house"></i>
+            </a>
+
+            <!-- Produits -->
+            <a href="produits.html" aria-label="Produits">
+                <i class="fa-solid fa-shirt"></i>
+            </a>
+
+            <!-- Panier -->
+            <a href="panier.html" aria-label="Panier">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+
+            <!-- Contact -->
+            <a href="contact.html" aria-label="Contact">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+
+            <!-- Connexion -->
+            <a href="login.html" aria-label="Connexion">
+                <i class="fa-solid fa-user"></i>
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- Message de bienvenue -->
+    <p>Bienvenue dans notre boutique de T-shirts</p>
+
+
+    <!-- Contenu principal -->
+    <main>
+
+        <!-- Section des produits -->
+        <section>
+
+            <h2>Nos produits</h2>
+            <div id="products-list"></div>
+            <!-- Contient toutes les cartes produits -->
+            <div class="products">
+
+                <!-- Produit 1 -->
+                <div class="pro1">
+
+                    <h3>T-shirt noir</h3>
+
+                    <img
+                        src="/img/noir.png"
+                        alt="T-shirt noir"
+                    >
+
+                    <p>15€</p>
+
+                    <button>
+                        Ajouter au panier
+                    </button>
+
+                </div>
+
+
+                <!-- Produit 2 -->
+                <div class="pro1">
+
+                    <h3>T-shirt rouge</h3>
+
+                    <img
+                        src="/img/rouge.png"
+                        alt="T-shirt rouge"
+                    >
+
+                    <p>20€</p>
+
+                    <button>
+                        Ajouter au panier
+                    </button>
+
+                </div>
+
+
+                <!-- Produit 3 -->
+                <div class="pro1">
+
+                    <h3>T-shirt blanc</h3>
+
+                    <img
+                        src="/img/blanc.png"
+                        alt="T-shirt blanc"
+                    >
+
+                    <p>25€</p>
+
+                    <button>
+                        Ajouter au panier
+                    </button>
+
+                </div>
+
+
+                <!-- Produit 4 -->
+                <div class="pro1">
+
+                    <h3>T-shirt vert</h3>
+
+                    <img
+                        src="/img/ver.png"
+                        alt="T-shirt vert"
+                    >
+
+                    <p>25€</p>
+
+                    <button>
+                        Ajouter au panier
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Pied de page -->
+    <footer>
+
+        <!-- Copyright -->
+        <div>
+            <p>© 2026 T-shirt Store</p>
+        </div>
+
+        <!-- Informations de contact -->
+        <div>
+            <p>t-shirt@mile.com</p>
+            <p>06 54 73 21 13</p>
+        </div>
+
+        <!-- Lien vers la page contact -->
+        <div>
+            <a href="contact.html">
+                Contact
+            </a>
+        </div>
+
+    </footer>
+
+
+    <!-- Fichier JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

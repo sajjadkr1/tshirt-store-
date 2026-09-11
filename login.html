@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Adapte la page aux différentes tailles d'écran -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Connexion - T-shirt Store</title>
+
+    <!-- Fichier CSS principal -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome pour les icônes -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header>
+
+        <h1>T-shirt Store</h1>
+
+        <nav>
+
+            <!-- Retour à l'accueil -->
+            <a href="index.html" aria-label="Accueil">
+                <i class="fa-solid fa-house"></i>
+            </a>
+
+            <!-- Produits -->
+            <a href="produits.html" aria-label="Produits">
+                <i class="fa-solid fa-shirt"></i>
+            </a>
+
+            <!-- Contact -->
+            <a href="contact.html" aria-label="Contact">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+
+            <!-- Page de connexion -->
+            <a href="login.html" aria-label="Connexion">
+                <i class="fa-solid fa-user"></i>
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         CONNEXION / INSCRIPTION
+    ========================== -->
+
+    <main class="auth-container">
+
+        <!-- Carte qui contient les formulaires -->
+        <div class="auth-card">
+
+            <!-- Boutons pour changer de formulaire -->
+            <div class="auth-tabs">
+
+                <button
+                    type="button"
+                    id="login-tab"
+                    class="active"
+                >
+                    Connexion
+                </button>
+
+                <button
+                    type="button"
+                    id="signup-tab"
+                >
+                    S'inscrire
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 FORMULAIRE CONNEXION
+            ========================== -->
+
+            <form id="login-form">
+
+                <h2>Connexion</h2>
+
+                <!-- Adresse e-mail -->
+                <div class="field">
+                    <input
+                        type="email"
+                        placeholder="Adresse e-mail"
+                        required
+                    >
+                </div>
+
+                <!-- Mot de passe -->
+                <div class="field">
+                    <input
+                        type="password"
+                        placeholder="Mot de passe"
+                        required
+                    >
+                </div>
+
+                <!-- Bouton de connexion -->
+                <button type="submit" class="btn">
+                    Se connecter
+                </button>
+
+            </form>
+
+
+            <!-- =========================
+                 FORMULAIRE INSCRIPTION
+            ========================== -->
+
+            <form id="register-form">
+
+                <h2>Créer un compte</h2>
+
+                <!-- Nom -->
+                <div class="field">
+                    <input
+                        type="text"
+                        placeholder="Nom"
+                        required
+                    >
+                </div>
+
+                <!-- Adresse e-mail -->
+                <div class="field">
+                    <input
+                        type="email"
+                        placeholder="Adresse e-mail"
+                        required
+                    >
+                </div>
+
+                <!-- Mot de passe -->
+                <div class="field">
+                    <input
+                        type="password"
+                        placeholder="Mot de passe"
+                        required
+                    >
+                </div>
+
+                <!-- Confirmation du mot de passe -->
+                <div class="field">
+                    <input
+                        type="password"
+                        placeholder="Confirmer le mot de passe"
+                        required
+                    >
+                </div>
+
+                <!-- Bouton d'inscription -->
+                <button type="submit" class="btn">
+                    S'inscrire
+                </button>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

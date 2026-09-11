@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Adapte la page aux différentes tailles d'écran -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Titre de la page -->
+    <title>T-shirt Store</title>
+
+    <!-- Fichier CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome pour utiliser les icônes -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header>
+
+        <!-- Nom du magasin -->
+        <h1>T-shirt Store</h1>
+
+        <!-- Navigation principale -->
+        <nav>
+
+            <!-- Accueil -->
+            <a href="index.html" aria-label="Accueil">
+                <i class="fa-solid fa-house"></i>
+            </a>
+
+            <!-- Produits -->
+            <a href="produits.html" aria-label="Produits">
+                <i class="fa-solid fa-shirt"></i>
+            </a>
+
+            <!-- Panier : ouvre le panier sans changer de page -->
+            <button
+                type="button"
+                id="cart-button"
+                aria-label="Panier"
+            >
+                <i class="fa-solid fa-cart-shopping"></i>
+            </button>
+
+            <!-- Contact -->
+            <a href="contact.html" aria-label="Contact">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+
+            <!-- Connexion -->
+            <a href="login.html" aria-label="Connexion">
+                <i class="fa-solid fa-user"></i>
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         PANIER
+    ========================== -->
+
+    <div id="cart-panel">
+
+        <!-- Fermer le panier -->
+        <button
+            type="button"
+            id="close-cart"
+            aria-label="Fermer le panier"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <!-- Titre du panier -->
+        <h2>
+            <i class="fa-solid fa-cart-shopping"></i>
+            Mon panier
+        </h2>
+
+        <!-- Produits du panier -->
+        <div id="cart"></div>
+
+    </div>
+
+
+    <!-- =========================
+         CONTENU PRINCIPAL
+    ========================== -->
+
+    <!-- Message de bienvenue -->
+    <p>Bienvenue dans notre boutique de T-shirts</p>
+
+    <main>
+
+        <!-- Section des produits -->
+        <section>
+
+            <h2>Nos produits</h2>
+
+            <div class="products">
+
+                <!-- Produit 1 -->
+                <div class="pro1">
+
+                    <h3>T-shirt noir</h3>
+
+                    <img
+                        src="/img/noir.png"
+                        alt="T-shirt noir"
+                    >
+
+                    <p>15€</p>
+
+                    <button>
+                        Ajouter au panier
+                    </button>
+
+                </div>
+
+
+                <!-- Produit 2 -->
+                <div class="pro1">
+
+                    <h3>T-shirt rouge</h3>
+
+                    <img
+                        src="/img/rouge.png"
+                        alt="T-shirt rouge"
+                    >
+
+                    <p>20€</p>
+
+                    <button>
+                        Ajouter au panier
+                    </button>
+
+                </div>
+
+
+                <!-- Produit 3 -->
+                <div class="pro1">
+
+                    <h3>T-shirt blanc</h3>
+
+                    <img
+                        src="/img/blanc.png"
+                        alt="T-shirt blanc"
+                    >
+
+                    <p>25€</p>
+
+                    <button>
+                        Ajouter au panier
+                    </button>
+
+                </div>
+
+
+                <!-- Produit 4 -->
+                <div class="pro1">
+
+                    <h3>T-shirt vert</h3>
+
+                    <img
+                        src="/img/ver.png"
+                        alt="T-shirt vert"
+                    >
+
+                    <p>25€</p>
+
+                    <button>
+                        Ajouter au panier
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div>
+            <p>© 2026 T-shirt Store</p>
+        </div>
+
+        <div>
+            <p>t-shirt@mile.com</p>
+            <p>06 54 73 21 13</p>
+        </div>
+
+        <div>
+            <a href="contact.html">
+                Contact
+            </a>
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
