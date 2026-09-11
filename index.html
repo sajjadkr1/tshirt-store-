@@ -4,20 +4,16 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <!-- Adapte la page aux différentes tailles d'écran -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="description"
-        content="T-shirt Store est une boutique en ligne proposant une sélection de T-shirts de différentes couleurs."
-    >
+    <!-- Titre de la page -->
+    <title>T-shirt Store</title>
 
-    <title>T-shirt Store | Boutique de T-shirts</title>
-
+    <!-- Fichier CSS -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- Font Awesome pour utiliser les icônes -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -26,52 +22,66 @@
 
 <body>
 
+    <!-- En-tête du site -->
     <header>
+
+        <!-- Nom du magasin -->
         <h1>T-shirt Store</h1>
 
-        <nav aria-label="Navigation principale">
+        <!-- Navigation principale -->
+        <nav>
 
-            <a href="index.html" aria-label="Accueil">
-                <i class="fa-solid fa-house" aria-hidden="true"></i>
+            <!-- Accueil -->
+            <a href="index.html">
+                <i class="fa-solid fa-house"></i>
             </a>
 
-            <a href="#products" aria-label="Produits">
-                <i class="fa-solid fa-shirt" aria-hidden="true"></i>
+            <!-- Produits -->
+            <a href="#products">
+                <i class="fa-solid fa-shirt"></i>
             </a>
 
-            <a href="panier.html" aria-label="Panier">
-                <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+            <!-- Panier -->
+            <a href="panier.html">
+                <i class="fa-solid fa-cart-shopping"></i>
             </a>
 
-            <a href="#contact" aria-label="Contact">
-                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <!-- Contact -->
+            <a href="#contact">
+                <i class="fa-solid fa-envelope"></i>
             </a>
 
-            <a href="login.html" aria-label="Connexion">
-                <i class="fa-solid fa-user" aria-hidden="true"></i>
+            <!-- Connexion -->
+            <a href="login.html">
+                <i class="fa-solid fa-user"></i>
             </a>
 
         </nav>
+
     </header>
 
 
+    <!-- Message de bienvenue -->
+    <p>Bienvenue dans notre boutique de T-shirts</p>
+
+
+    <!-- Contenu principal -->
     <main>
 
-        <section aria-labelledby="welcome-title">
-            <h2 id="welcome-title">Bienvenue</h2>
-            <p>Bienvenue dans notre boutique de T-shirts.</p>
-        </section>
+        <!-- Section des produits -->
+        <section id="products">
 
+            <h2>Nos produits</h2>
 
-        <section id="products" aria-labelledby="products-title">
-
-            <h2 id="products-title">Nos produits</h2>
-
+            <!-- Produits venant de l'API -->
             <div id="products-list"></div>
 
+            <!-- Contient toutes les cartes produits -->
             <div class="products">
 
-                <article class="pro1">
+                <!-- Produit 1 -->
+                <div class="pro1">
+
                     <h3>T-shirt noir</h3>
 
                     <img
@@ -84,10 +94,13 @@
                     <button type="button">
                         Ajouter au panier
                     </button>
-                </article>
+
+                </div>
 
 
-                <article class="pro1">
+                <!-- Produit 2 -->
+                <div class="pro1">
+
                     <h3>T-shirt rouge</h3>
 
                     <img
@@ -100,10 +113,13 @@
                     <button type="button">
                         Ajouter au panier
                     </button>
-                </article>
+
+                </div>
 
 
-                <article class="pro1">
+                <!-- Produit 3 -->
+                <div class="pro1">
+
                     <h3>T-shirt blanc</h3>
 
                     <img
@@ -116,10 +132,13 @@
                     <button type="button">
                         Ajouter au panier
                     </button>
-                </article>
+
+                </div>
 
 
-                <article class="pro1">
+                <!-- Produit 4 -->
+                <div class="pro1">
+
                     <h3>T-shirt vert</h3>
 
                     <img
@@ -132,7 +151,8 @@
                     <button type="button">
                         Ajouter au panier
                     </button>
-                </article>
+
+                </div>
 
             </div>
 
@@ -141,29 +161,31 @@
     </main>
 
 
+    <!-- Pied de page -->
     <footer id="contact">
 
+        <!-- Copyright -->
         <div>
             <p>© 2026 T-shirt Store</p>
         </div>
 
+        <!-- Informations de contact -->
         <div>
-            <p>
-                <a href="mailto:t-shirt@mile.com">
-                    t-shirt@mile.com
-                </a>
-            </p>
+            <p>t-shirt@mile.com</p>
+            <p>06 54 73 21 13</p>
+        </div>
 
-            <p>
-                <a href="tel:+33654732113">
-                    06 54 73 21 13
-                </a>
-            </p>
+        <!-- Contact -->
+        <div>
+            <a href="#contact">
+                Contact
+            </a>
         </div>
 
     </footer>
 
 
+    <!-- Fichier JavaScript -->
     <script src="script.js"></script>
 
 </body>
